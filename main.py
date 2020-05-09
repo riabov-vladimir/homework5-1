@@ -10,12 +10,29 @@ directories = {
   '3': []
 }
 
-def main():
 
-def person():
+def main():
+  while True:
+    user_input = input('Введите команду: ').lower()
+    if user_input == 'p':
+      person(documents)
+    elif user_input == 's':
+      shelf()
+    elif user_input == 'l':
+      documents_list()
+    elif user_input == 'a':
+      add_document()
+    elif user_input() == 'q':
+      break
+
+def person(data_base):
   '''
-p – people – команда, которая спросит номер документа и выведет имя человека, которому он принадлежит
+  p – people – команда, которая спросит номер документа и выведет имя человека, которому он принадлежит
   '''  
+  user_input = input('Номер документа: ')
+  for client in data_base:
+    if client['number'] == user_input:
+      print(client['name'])
 
 def shelf():
   '''
@@ -34,3 +51,4 @@ def add_document():
   a – add – команда, которая добавит новый документ в каталог и в перечень полок, спросив его номер, тип, имя владельца и номер полки, на котором он будет храниться. Корректно обработайте ситуацию, когда пользователь будет пытаться добавить документ на несуществующую полку.
   '''
 
+main()
