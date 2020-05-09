@@ -19,7 +19,7 @@ def main():
     elif user_input == 's':
       shelf()
     elif user_input == 'l':
-      documents_list()
+      documents_list(documents)
     elif user_input == 'a':
       add_document()
     elif user_input() == 'q':
@@ -40,11 +40,12 @@ def shelf():
   Правильно обработайте ситуации, когда пользователь будет вводить несуществующий документ
 '''
 
-def documents_list():
+def documents_list(documents):
   '''
   l– list – команда, которая выведет список всех документов в формате passport "2207 876234" "Василий Гупкин";
   '''
-
+  for client in documents:
+    print(f'{client["type"]} "{client["number"]}" "{client["name"]}"')
 
 def add_document():
   '''
