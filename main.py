@@ -24,6 +24,8 @@ def main():
       delete(documents, directories)
     elif user_input == 'a':
       add_document(documents, directories)
+    elif user_input == 'd':
+      delete(documents, directories)
     elif user_input == 'q':
       break
 
@@ -118,6 +120,7 @@ def delete(documents, directories):
   for client in documents:
     if user_input_number == client['number']:
       documents.remove(client)
+
 
 
 main()
