@@ -143,6 +143,12 @@ def add_shelf(directories):
 
   directories.setdefault(user_input_shelf, [])
 
+def move():
+  '''
+  m – move – команда, которая спросит номер документа и целевую полку и переместит его с текущей полки на целевую
+  '''
+  
+
 main()
 
 print(directories)
