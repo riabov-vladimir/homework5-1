@@ -26,6 +26,8 @@ def main():
       add_document(documents, directories)
     elif user_input == 'd':
       delete(documents, directories)
+    elif user_input == 'as':
+      add_shelf(directories)
     elif user_input == 'q':
       break
 
@@ -133,6 +135,13 @@ def delete(documents, directories):
     if user_input_number == client['number']:
       documents.remove(client)
 
+def add_shelf(directories):
+  user_input_shelf = input('Номер новой полки: ')
+
+  while user_input_shelf in directories.keys():
+    user_input_shelf = input('Полка с таким номером уже существует! \nВведите другой номер: ')
+
+  directories.setdefault(user_input_shelf, [])
 
 main()
 
