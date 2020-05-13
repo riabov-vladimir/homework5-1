@@ -36,12 +36,12 @@ def check_number(directories):
     user_input_number = input('Номер документа: ')
 
     for shelf, doc in directories.items():
+        if user_input_number in doc:
+            return user_input_number
         while user_input_number not in doc:
             user_input_number = input('Документа с таким номером не существует!\nНомер документа: ')
-        if user_input_number in doc:
-            # print(user_input_number)
-            break
-    return user_input_number
+        
+    
 
 def person(data_base):
   '''
@@ -55,15 +55,16 @@ def person(data_base):
 
 def shelf(directories):
   '''
-  s – shelf – команда, которая спросит номер документа
-   и выведет номер полки, на которой он находится;
-   '''
-  user_input_number = check_number(directories)
-
-  for shelf, doc in directories.items():
-    if user_input_number in doc:
-      print(f'Документа находится на полке №{shelf}')
-    break
+  s – shelf – команда, которая спросит номер документа и выведет номер полки, на которой он находится
+  '''
+  user_input_number = input('Номер полки: ')
+  for key, value in directories.items():
+    # print(value)
+    if user_input_number in value:
+      print(f'Документа находится на полке №{key}')
+      break
+  else:
+    print('Такого документа нет')
 
 def documents_list(documents):
   '''
@@ -120,6 +121,7 @@ def delete(documents, directories):
   for client in documents:
     if user_input_number == client['number']:
       documents.remove(client)
+
 
 
 
