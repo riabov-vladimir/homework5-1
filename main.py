@@ -29,19 +29,32 @@ def main():
     elif user_input == 'q':
       break
 
-def check_number(directories):
-    '''
-    проверка ввода - запрашивает номер документа, до тех пор когда не будет введён номер существующего документа
-    '''
-    user_input_number = input('Номер документа: ')
+# def check_number(directories):
+#   '''
+#   проверка ввода - запрашивает номер документа, до тех пор когда не будет введён номер существующего документа
+#   '''
+  
 
-    for shelf, doc in directories.items():
-        if user_input_number in doc:
-            return user_input_number
-        while user_input_number not in doc:
-            user_input_number = input('Документа с таким номером не существует!\nНомер документа: ')
-        
-    
+#   # for shelf, doc in directories.items():
+#   #   if user_input_number in doc:
+#   #     return user_input_number
+
+#   while user_input_number not in list(directories.values()):
+#     user_input_number = input('Документа с таким номером не существует!\nНомер документа: ')
+#   return user_input_number
+      
+# def check_shelf(directories):
+#   '''
+#   проверка ввода - запрашивает номер полки, до тех пор когда не будет введён номер существующей полки
+#   '''
+#   user_input_shelf = input('Номер полки: ')
+
+#   for shelf in directories.keys():
+#     if user_input_shelf in shelf:
+#       return user_input_shelf
+
+#   while user_input_shelf not in shelf:
+#     user_input_shelf = input('Полки с таким номером не существует!\nНомер полки: ')
 
 def person(data_base):
   '''
@@ -108,21 +121,20 @@ def delete(documents, directories):
    '''
   user_input_number = input('Номер документа: ')
 
-  for shelf, doc in directories.items():
-    while user_input_number not in doc:
-      user_input_number = input('Документа с таким номером не существует!\nНомер документа: ')
-    if user_input_number in doc:
-      break
-  
+
+
   for key, value in directories.items():
     if user_input_number in value:
       value.remove(user_input_number)
+    else:
+      pass
 
   for client in documents:
     if user_input_number == client['number']:
       documents.remove(client)
 
 
-
-
 main()
+
+print(directories)
+print(documents)
