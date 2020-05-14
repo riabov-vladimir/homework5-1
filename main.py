@@ -41,7 +41,7 @@ def documents_list(documents):
 
 def list_shelfs(directories):
   '''
-  ls (list shelfs) - команда, которая выводит на экран список полок и документов, корые на них находятся
+  ls (list shelfs) - команда, которая выводит на экран список полок и документов, которые на них находятся
   '''
   for shelf, docs in directories.items():
     print(f'Полка №{shelf}: {docs}')
@@ -51,9 +51,18 @@ def person(data_base):
   p – people – команда, которая спросит номер документа
    и выведет имя человека, которому он принадлежит
   '''  
-  user_input = input('Номер документа: ')
+  directories_docs = []
+
+  for x in directories.values(): 
+    directories_docs = directories_docs + x
+
+  user_input_number = input('Номер документа: ')
+
+  while user_input_number not in directories_docs:
+    user_input_number = input('Документа с таким номером не существует \nНомер документа: ')
+
   for client in data_base:
-    if client['number'] == user_input:
+    if client['number'] == user_input_number:
       print(client['name'])
 
 def shelf(directories):
@@ -98,13 +107,16 @@ def delete(documents, directories):
   '''
   d – delete – команда, которая спросит номер документа и удалит его из каталога и из перечня полок
    '''
+
+  directories_docs = []
+
+  for x in directories.values(): 
+    directories_docs = directories_docs + x
+
   user_input_number = input('Номер документа: ')
 
-  for key, value in directories.items():
-    if user_input_number in value:
-      value.remove(user_input_number)
-    else:
-      pass
+  while user_input_number not in directories_docs:
+    user_input_number = input('Документа с таким номером не существует \nНомер документа: ')
 
   for client in documents:
     if user_input_number == client['number']:
@@ -124,6 +136,7 @@ def move(directories):
    '''
 
   directories_docs = []
+
   for x in directories.values(): 
     directories_docs = directories_docs + x
 
