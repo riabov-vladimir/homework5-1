@@ -19,6 +19,8 @@ def main():
       shelf(directories)
     elif user_input == 'l':
       documents_list(documents)
+    elif user_input == 'ls':
+      list_shelfs(directories)
     elif user_input == 'd':
       delete(documents, directories)
     elif user_input == 'a':
@@ -32,15 +34,20 @@ def main():
     elif user_input == 'q':
       break
 
+def documents_list(documents):
+  '''
+  l – list – команда, которая выведет список всех документов
+  '''
+  for client in documents:
+    print(f'{client["type"]} "{client["number"]}" "{client["name"]}"')
 
-def number_check(directories):
 
-  directories_docs = []
-  for x in directories.values(): 
-    directories_docs = directories_docs + x
-
-  if user_input_number in directories_docs:
-    return False 
+def list_shelfs(directories):
+  '''
+  ls (list shelfs) - команда, которая выводит на экран список полок и документов, корые на них находятся
+  '''
+  for shelf, docs in directories.items():
+    print(f'Полка №{shelf}: {docs}')
 
 
 def person(data_base):
@@ -65,13 +72,6 @@ def shelf(directories):
       break
   else:
     print('Такого документа нет')
-
-def documents_list(documents):
-  '''
-  l– list – команда, которая выведет список всех документов
-  '''
-  for client in documents:
-    print(f'{client["type"]} "{client["number"]}" "{client["name"]}"')
 
 def add_document(documents, directories):
     '''
@@ -150,8 +150,4 @@ def move(directories):
 
   directories[user_input_shelf].append(user_input_number)
 
-
-
 main()
-
-print(directories)
