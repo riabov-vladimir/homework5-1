@@ -11,6 +11,7 @@ directories = {
 }
 
 def main():
+  print('p – person – команда, которая спросит \nномер документа и выведет имя человека, которому он принадлежит;\ns – shelf – команда, которая спросит номер документа\n и выведет номер полки, на которой он находится;\nl – list – команда, которая выведет список всех документов;\nls - list shelfs - команда, которая выведет список полок и документок, находящихся на них;\na – add – команда, которая добавит новый документ\n в каталог и в перечень полок, спросив его номер, тип, имя владельца и номер полки, на котором он будет храниться;\nd – delete – команда, которая спросит номер документа\n и удалит его из каталога и из перечня полок;\nm – move – команда, которая спросит номер документа\n и целевую полку и переместит его с текущей полки на целевую;\nas – add shelf – команда, которая спросит номер новой\n полки и добавит ее в перечень.')
   while True:
     user_input = input('Введите команду: ').lower()
     if user_input == 'p':
@@ -25,8 +26,6 @@ def main():
       delete(documents, directories)
     elif user_input == 'a':
       add_document(documents, directories)
-    elif user_input == 'd':
-      delete(documents, directories)
     elif user_input == 'as':
       add_shelf(directories)
     elif user_input == 'm':
@@ -41,14 +40,12 @@ def documents_list(documents):
   for client in documents:
     print(f'{client["type"]} "{client["number"]}" "{client["name"]}"')
 
-
 def list_shelfs(directories):
   '''
   ls (list shelfs) - команда, которая выводит на экран список полок и документов, корые на них находятся
   '''
   for shelf, docs in directories.items():
     print(f'Полка №{shelf}: {docs}')
-
 
 def person(data_base):
   '''
@@ -121,7 +118,6 @@ def add_shelf(directories):
     user_input_shelf = input('Полка с таким номером уже существует! \nВведите другой номер: ')
 
   directories.setdefault(user_input_shelf, [])
-
 
 def move(directories):
   '''
