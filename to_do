@@ -4,3 +4,9 @@
   delete
   person
   
+    user_input_shelf = input('Номер полки: ')
+
+    while user_input_shelf not in directories.keys():
+        user_input_shelf = input('Полки с таким номером не существует! \nВведите номер полки: ')
+    
+    directories[user_input_shelf].append(user_input_number)
